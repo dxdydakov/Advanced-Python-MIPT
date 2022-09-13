@@ -18,5 +18,3 @@ def fibo(n, memo={}):
     ans = fibo(n - 2) + fibo(n - 1)
     memo[n] = ans
     return memo[n]
-
-print(fibo(10))
