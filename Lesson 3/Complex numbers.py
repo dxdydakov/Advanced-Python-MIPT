@@ -24,13 +24,13 @@ class Complex(object):
         return Complex(self.real + other.real, self.imag + other.imag)
 
     def __mul__(self, other):
-        # Перемножение комплексных чисел: (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
+        # Перемножение комплексных чисел: (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j.
         return Complex(self.real * other.real - self.imag * other.image, self.real * other.imag + self.imag*other.real)
 
     def __truediv__(self, other):
         # Деление комплексных чисел:
-        # (a+bj) / (c+dj) = (a+bj)*(c-dj) / (c+dj)*(c-dj) = (a+bj) * (c-dj) / divisor = (ac+bd)/divisor + (bc - ad)j/divisor
-        # divisor = c**2 + d**2
+        # (a+bj) / (c+dj) = (a+bj)*(c-dj) / (c+dj)*(c-dj) = (a+bj) * (c-dj) / divisor = (ac+bd)/divisor + (bc - ad)j/divisor.
+        # divisor = c**2 + d**2.
 
         divisor = other.get_module(other.real, other.imag)**2
         return Complex(((self.real * other.real)+(self.imag * other.imag))/divisor,
@@ -41,26 +41,26 @@ class Complex(object):
         return '({}, {})'.format(self.real, self.imag)
 
     def set_real(self, number):
-        # Меняет действительную часть числа
+        # Меняет действительную часть числа.
         self.real = number
         return self.real
 
     def set_imag(self, number):
-        # Меняет мнимую часть числа
+        # Меняет мнимую часть числа.
         self.imag = number
         return self. imag
 
     def get_conjugate(self):
-        # Получить сопряжённое комплексное число
+        # Получить сопряжённое комплексное число.
         return Complex(self.real, -1 * self.imag)
 
     def get_module(self):
-        # Получить модуль комплексного числа
+        # Получить модуль комплексного числа.
         self.m = np.sqrt(self.real ** 2 + self.imag ** 2)
         return self.m
 
     def get_phi(self):
-        # Получить угол соответствующий комплексному числу
+        # Получить угол соответствующий комплексному числу.
         if self.real > 0:
             self.phi = np.arctan(self.imag / self.real) * 180 / np.pi
 
@@ -79,7 +79,7 @@ class Complex(object):
         return self.phi
 
     def to_exp(self):
-        # Получить показательную форму комплексного числа с точностью до десятых: z = |z|exp(iφ)
+        # Получить показательную форму комплексного числа с точностью до десятых: z = |z|exp(iφ).
         return '{:.1f}*exp({:.1f}*i)'.format(self.get_module(), self.get_phi())
 
     def to_alg(self):
