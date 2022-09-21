@@ -37,7 +37,7 @@ class Complex(object):
                        ((self.imag * other.real - self.real * other.imag))/divisor)
 
     def __repr__(self):
-        # Меняем repr-описание объекта. Позволяет выводит комплексное число в явном виде.
+        # Меняем repr-описание объекта. Позволяет выводить комплексное число в явном виде.
         return '({}, {})'.format(self.real, self.imag)
 
     def set_real(self, number):
