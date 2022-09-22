@@ -90,6 +90,6 @@ class Complex(object):
         self.real = self.m * np.cos(self.phi)
         self.imag = self.m * np.sin(self.phi)
 
-        Complex(self.real, self.imag)
         return '({:.1f},{:.1f})'.format(self.real, self.imag)
+
 
