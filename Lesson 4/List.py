@@ -94,7 +94,7 @@ class List:
         if index is not None and abs(index) > self._length:
             raise IndexError('Index out of range :((')
 
-        #По умолчанию удаляем последний элемент
+        #По умолчанию выбираем последний элемент
         elif index is None:
             index = self._length - 1
 
