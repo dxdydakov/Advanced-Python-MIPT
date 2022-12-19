@@ -51,24 +51,22 @@ WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 #load music and sounds
 music_links = ['music.mp3', 'war2.mp3', 'war3.mp3', 'war5.mp3']
 
-def get_music(array):
-     return random.randrange(len(music_links))
+def get_music(music_array):
+     return random.randrange(len(music_array))
 
 pygame.mixer.music.load('assets/audio/war4.mp3')
-pygame.mixer.music.set_volume(0.25)
 pygame.mixer.music.play(-1, 0.0, 5000)
 sword_fx = pygame.mixer.Sound('assets/audio/sword.wav')
 sword_fx.set_volume(0.15)
 magic_fx = pygame.mixer.Sound('assets/audio/magic.wav')
-magic_fx.set_volume(0.25)
+magic_fx.set_volume(0.15)
 fight1_scream = pygame.mixer.Sound('assets/audio/fight1.wav')
 fight1_scream.set_volume(0.15)
 fight2_scream = pygame.mixer.Sound('assets/audio/fight2.wav')
 fight2_scream.set_volume(0.15)
 
-
 #load background image
-bg_image = pygame.image.load("assets/images/background/background11.jpg").convert_alpha()
+bg_image = pygame.image.load("assets/images/background/background15.jpg").convert_alpha()
 loading_image1 = pygame.image.load("assets/images/background/castle1.jpg").convert_alpha()
 loading_image2 = pygame.image.load("assets/images/background/castle2.jpg").convert_alpha()
 
@@ -86,6 +84,7 @@ WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
 #define font
 count_font = pygame.font.Font('assets/fonts/turok.ttf', 80)
 score_font = pygame.font.Font('assets/fonts/turok.ttf', 30)
+font3 = pygame.font.SysFont("assets/fonts/turok.ttf", 42)
 
 #function for drawing background
 def draw_bg(image):
@@ -95,7 +94,7 @@ def draw_bg(image):
 #function for drawing fighter healts bars
 def draw_health_bar(health, x, y):
     ratio = health / 100
-    pygame.draw.rect(screen, WHITE, (x-2, y-2, 402, 34))
+    pygame.draw.rect(screen, WHITE, (x-2, y-2, 402, 30))
     pygame.draw.rect(screen, BLACK, (x, y, 400, 30))
     pygame.draw.rect(screen, RED, (x,y, 400*ratio, 30))
 
@@ -119,14 +118,14 @@ while loading:
         for i, v in enumerate(loading_text):
             if x < 3:
                 draw_bg(loading_image1)
-                advice = 'Press R or T to attack as warrior.'
+                advice = 'Press R or T to attack as the warrior.'
                 text2 = font2.render(advice, True, WHITE, BLACK)
                 textRect2 = text2.get_rect()
                 textRect2.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 100)
                 screen.blit(text2, textRect2)
             elif x >= 3:
                 draw_bg(loading_image2)
-                advice = 'Press 1 or 2 to attack as wizard.'
+                advice = 'Press 1 or 2 to attack as the wizard.'
                 text2 = font2.render(advice, True, WHITE, BLACK)
                 textRect2 = text2.get_rect()
                 textRect2.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 100)
@@ -153,6 +152,9 @@ while loading:
 
     loading = False
     sleep(10)
+
+def pause_menu():
+    pass
 
 pygame.mixer.music.load('assets/audio/' + music_links[get_music(music_links)])
 pygame.mixer.music.set_volume(0.25)
